@@ -5,128 +5,480 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hannah Ryu</title>
   <style>
+    :root {
+      --bg: #f7f1e9;
+      --bg-soft: #fbf7f2;
+      --ink: #262320;
+      --muted: #7b746c;
+      --accent: #e2b8a2;
+      --accent-soft: #f4d6c5;
+      --card-border: rgba(0, 0, 0, 0.05);
+      --radius-lg: 18px;
+      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      color: #222;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at top left, #fdf6ef 0, var(--bg) 40%, #f6efe7 100%);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+
+    .page {
+      max-width: 1040px;
+      margin: 32px auto 72px;
+      padding: 0 20px;
+    }
+
+    /* Shell */
+    .frame {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 32px;
+      padding: 26px 26px 32px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
     header {
-      padding: 40px;
-      text-align: center;
-      background: #e7e7ff;
-      border-bottom: 2px solid #d0d0ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin-top: 10px;
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 20%, #fff9f4, var(--accent-soft));
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
       font-size: 1.1rem;
-      color: #444;
+      color: #4b4037;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     }
+
+    .title-block h1 {
+      font-size: 1.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .title-block p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
     nav {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: #f0f0ff;
-      padding: 15px 0;
-      border-bottom: 1px solid #ddd;
+      gap: 18px;
+      font-size: 0.9rem;
     }
+
     nav a {
       text-decoration: none;
-      color: #333;
-      font-weight: bold;
+      color: var(--muted);
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 150ms ease, border-color 150ms ease;
     }
-    section {
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+
+    nav a:hover {
+      color: var(--ink);
+      border-color: var(--accent);
     }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
+
+    main {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 28px;
     }
-    .project-card {
-      background: #ffffff;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 8px;
-      border: 1px solid #e2e2e2;
+
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
     }
-    footer {
-      text-align: center;
-      padding: 30px;
-      margin-top: 40px;
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(145deg, var(--bg-soft), #fff);
+      border-radius: var(--radius-lg);
+      padding: 22px 22px 20px;
+      border: 1px solid var(--card-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -30% 40% auto;
+      height: 180px;
+      background: radial-gradient(circle at top, rgba(243, 205, 185, 0.7), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero h2 {
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-body {
+      font-size: 0.92rem;
+      color: #4b453f;
+    }
+
+    .hero-body span.highlight {
+      background: linear-gradient(120deg, rgba(226, 184, 162, 0.25), rgba(243, 214, 197, 0.35));
+      padding: 0 3px;
+      border-radius: 6px;
+    }
+
+    .hero-footer {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    /* Right column */
+    .side-card {
+      background: #fffefb;
+      border-radius: var(--radius-lg);
+      padding: 16px 18px 16px;
+      border: 1px solid var(--card-border);
+    }
+
+    .side-title {
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
       font-size: 0.9rem;
-      color: #666;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-links a span.label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 26px;
+    }
+
+    section h3 {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .grid-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 13px;
+      border: 1px solid var(--card-border);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      color: var(--muted);
+    }
+
+    .card h4 {
+      font-size: 0.98rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #4f4943;
+    }
+
+    .meta-row {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Hannah Ryu</h1>
-    <p>Statistics & Neuroscience | Data Science | Machine Learning | Research</p>
-  </header>
+  <div class="page">
+    <div class="frame">
+      <header>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div class="logo-mark">H</div>
+          <div class="title-block">
+            <h1>Hannah&nbsp;Ryu</h1>
+            <p>Statistics · Neuroscience · Data & Neural Systems</p>
+          </div>
+        </div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#research">Research</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#research">Research</a>
-    <a href="#contact">Contact</a>
-  </nav>
+      <main>
+        <div>
+          <section id="about" class="hero">
+            <div class="hero-inner">
+              <div class="tag">
+                <span class="tag-dot"></span>
+                <span>Student, researcher, maker</span>
+              </div>
+              <h2>Building bridges between brains and data.</h2>
+              <p class="hero-sub">
+                I study how complex systems behave under uncertainty, from neural activity in primates to public health outcomes across countries.
+              </p>
+              <p class="hero-body">
+                At the University of Washington, I work at the intersection of
+                <span class="highlight">statistics, neuroscience, and machine learning</span>.
+                I like long messy datasets, thoughtful experimental design, and visual stories that make technical work feel intuitive.
+              </p>
+              <div class="hero-footer">
+                <div class="pill">Computational neuroscience</div>
+                <div class="pill">Survival + predictive modeling</div>
+                <div class="pill">Data visualization</div>
+              </div>
+            </div>
+          </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm an undergraduate Statistics and Neuroscience student at the University of Washington.
-      My work spans computational neuroscience, machine learning, global health analytics, and data engineering.
-      I study neural coherence and cognitive processes in nonhuman primates, build ML pipelines for biomedical data,
-      and design dashboards and modeling systems for public health datasets.
-    </p>
-    <p>
-      I enjoy turning messy data into structured insights, exploring uncertainty, and building tools that help others understand complex systems.
-    </p>
-  </section>
+          <section id="projects">
+            <h3>Selected Projects</h3>
+            <div class="grid-two">
+              <article class="card">
+                <div class="card-header">
+                  <h4>Neural coherence in texture exploration</h4>
+                  <span class="chip">Neuroscience</span>
+                </div>
+                <p>
+                  Longitudinal analysis of coherence across M1U, S1U, and PFU during an orofacial texture task in rhesus macaques, comparing control, scopolamine, and nerve block conditions.
+                </p>
+                <div class="meta-row">
+                  <span>MATLAB · statistics</span>
+                  <span>signal processing</span>
+                </div>
+              </article>
 
-  <section id="projects">
-    <h2>Projects</h2>
+              <article class="card">
+                <div class="card-header">
+                  <h4>Global immunization and health spending</h4>
+                  <span class="chip">Public health</span>
+                </div>
+                <p>
+                  Shiny dashboard exploring vaccine coverage (DTP3, MCV1, BCG) against health expenditure trends, with clustering to surface regional and income based patterns over time.
+                </p>
+                <div class="meta-row">
+                  <span>R · Shiny</span>
+                  <span>UMAP · HDBSCAN</span>
+                </div>
+              </article>
+            </div>
 
-    <div class="project-card">
-      <h3>Neural Coherence Analysis</h3>
-      <p>Analyzing M1U-PFU, S1U-PFU, and M1U-S1U coherence across texture discrimination tasks in rhesus macaques.</p>
+            <div class="grid-two" style="margin-top:12px;">
+              <article class="card">
+                <div class="card-header">
+                  <h4>ML for clinical risk and reporting</h4>
+                  <span class="chip">Machine learning</span>
+                </div>
+                <p>
+                  Fine tuned models on de identified clinical data, built evaluation tooling for precision, recall, ROC curves, and automated comparisons across algorithms to support model selection.
+                </p>
+                <div class="meta-row">
+                  <span>Python</span>
+                  <span>scikit learn</span>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="card-header">
+                  <h4>Designing humane data experiences</h4>
+                  <span class="chip">Design</span>
+                </div>
+                <p>
+                  Ongoing experiments with dashboards, small web tools, and speculative design projects that make abstract models feel more legible and less intimidating to non technical audiences.
+                </p>
+                <div class="meta-row">
+                  <span>HTML · CSS</span>
+                  <span>visual storytelling</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="research">
+            <h3>Research Threads</h3>
+            <article class="card">
+              <p>
+                I am drawn to questions where behavior, uncertainty, and biology overlap.
+                Recently, that has meant looking at how pharmacological manipulations reshape neural coherence during texture guided licking, and how survival models can clarify risk dynamics in oncology.
+              </p>
+              <p style="margin-top:10px;">
+                I enjoy moving between experiment design, data cleaning, modeling, and interpretation, keeping an eye on how assumptions shape the stories we tell with our results.
+              </p>
+            </article>
+          </section>
+        </div>
+
+        <aside>
+          <section id="contact" class="side-card">
+            <div class="side-title">Contact</div>
+            <div class="contact-links">
+              <div>
+                <span class="label">Email</span><br />
+                <a href="mailto:hannah@example.com">hannah@example.com</a>
+              </div>
+              <div>
+                <span class="label">GitHub</span><br />
+                <a href="https://github.com/hryu673" target="_blank" rel="noreferrer">
+                  github.com/hryu673
+                </a>
+              </div>
+              <div>
+                <span class="label">LinkedIn</span><br />
+                <a href="#" target="_blank" rel="noreferrer">
+                  LinkedIn profile
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section class="side-card" style="margin-top:14px;">
+            <div class="side-title">Snapshot</div>
+            <p style="font-size:0.88rem; color:#504a44;">
+              Undergraduate at the University of Washington studying Statistics and Neuroscience.
+              Interested in computational neuroscience, public health analytics, and ML driven tools that actually respect their users.
+            </p>
+          </section>
+        </aside>
+      </main>
+
+      <footer>
+        © 2025 · Built by Hannah in HTML & CSS
+      </footer>
     </div>
-
-    <div class="project-card">
-      <h3>Global Immunization Dashboard</h3>
-      <p>Built a Shiny dashboard analyzing global vaccination coverage, clustering patterns, and health expenditure relationships.</p>
-    </div>
-
-    <div class="project-card">
-      <h3>Machine Learning for Cancer Risk</h3>
-      <p>Fine tuned LLMs and classical ML models for classification of breast cancer risk using large scale clinical datasets.</p>
-    </div>
-
-  </section>
-
-  <section id="research">
-    <h2>Research</h2>
-    <p>
-      My research spans computational neuroscience and biomedical ML. I study sensory processing and memory performance in primates and apply statistical and machine learning approaches to analyze high dimensional neural time series data. I also work on predictive modeling and survival analysis for clinical datasets.
-    </p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: hannah@example.com</p>
-    <p>GitHub: <a href="https://github.com/" target="_blank">github.com/</a></p>
-    <p>LinkedIn: <a href="#" target="_blank">LinkedIn Profile</a></p>
-  </section>
-
-  <footer>
-    © 2025 Hannah Ryu
-  </footer>
+  </div>
 </body>
 </html>
