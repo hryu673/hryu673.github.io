@@ -798,6 +798,51 @@
                   inset 0 1px 0 rgba(255, 255, 255, 0.2),
                   inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+    }
+
+    .fade-in-delay.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-2 {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+    }
+
+    .fade-in-delay-2.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-3 {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+    }
+
+    .fade-in-delay-3.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -805,9 +850,9 @@
     <div class="frame">
       <header>
         <div style="display:flex; align-items:center; gap:14px;">
-          <div class="title-block">
-            <h1>Hannah&nbsp;Ryu</h1>
-            <p>Statistics · Public Health · Data Science</p>
+          <div class="title-block" style="text-align: center;">
+            <img src="signature.png" alt="Hannah Ryu" style="width: 400px; height: 100px; object-fit: contain; transform: translateY(20px);" />
+            <p style="margin-top: 8px; margin-bottom: 0;">Statistics · Public Health · Data Science</p>
           </div>
         </div>
         <nav>
@@ -820,7 +865,7 @@
 
       <main>
         <!-- Hero Image Section -->
-        <section class="hero-section">
+        <section class="hero-section fade-in">
           <div class="hero-about">
             <div class="hero-inner">
               <h3 style="font-size: 1.8rem; margin-bottom: 8px; font-weight: 600; color: var(--ink);">Hello! I'm Hannah</h3>
@@ -837,10 +882,10 @@
 
         <div class="main-content">
           <div>
-            <section id="projects">
+            <section id="projects" class="fade-in-delay">
               <h3>Projects</h3>
               <div class="grid-three">
-                <article class="card">
+                <article class="card fade-in-delay-2">
                   <div class="card-header">
                     <h4>Bayesian analysis of COVID-19 Vaccine Efficacy</h4>
                     <span class="chip">Bayesian Statistics</span>
@@ -857,7 +902,7 @@
                   </div>
                 </article>
 
-                <article class="card">
+                <article class="card fade-in-delay-2">
                   <div class="card-header">
                     <h4>Neural coherence in texture exploration</h4>
                     <span class="chip">Neuroscience</span>
@@ -874,7 +919,7 @@
                   </div>
                 </article>
 
-                <article class="card">
+                <article class="card fade-in-delay-2">
                   <div class="card-header">
                     <h4>R-Shiny dashboard (in progress)</h4>
                     <span class="chip">Data Visualization</span>
@@ -890,10 +935,10 @@
               </div>
             </section>
 
-            <section id="experience">
+            <section id="experience" class="fade-in-delay">
               <h3>Experience</h3>
               <div class="grid-two">
-                <article class="card">
+                <article class="card fade-in-delay-2">
                   <div class="experience-card">
                     <img src="Fred_Hutch_Logo.png" alt="Fred Hutchinson Cancer Center" class="company-logo" />
                     <div class="experience-content">
@@ -908,7 +953,7 @@
                   </div>
                 </article>
 
-                <article class="card">
+                <article class="card fade-in-delay-2">
                   <div class="experience-card">
                     <img src="UW_Research_Logo.png" alt="University of Washington Research" class="company-logo" />
                     <div class="experience-content">
@@ -923,7 +968,7 @@
                   </div>
                 </article>
 
-                <article class="card">
+                <article class="card fade-in-delay-3">
                   <div class="experience-card">
                     <img src="UW_logo.png" alt="University of Washington" class="company-logo" />
                     <div class="experience-content">
@@ -938,7 +983,7 @@
                   </div>
                 </article>
 
-                <article class="card">
+                <article class="card fade-in-delay-3">
                   <div class="experience-card">
                     <img src="WANPRC_logo.png" alt="Washington National Primate Research Center" class="company-logo" />
                     <div class="experience-content">
@@ -955,9 +1000,9 @@
               </div>
             </section>
 
-            <section id="research">
+            <section id="research" class="fade-in-delay">
               <h3>Research</h3>
-              <article class="card">
+              <article class="card fade-in-delay-2">
                 <p>
                   I'm currently analyzing neural phase coherence in nonhuman primates to understand how different brain regions synchronize during texture-guided sensorimotor behavior. This work extends my earlier statistical analysis of coherence magnitudes by shifting into true time-series territory: instead of looking only at overall peak values, I track how coherence evolves across time, trials, and experimental conditions. The goal is to quantify how neural communication changes under control, scopolamine, and scopolamine plus nerve-block conditions, and whether specific frequency bands (e.g. theta) show distinct patterns. This involves extracting coherence trajectories, comparing them across texture plates and region pairs, and identifying condition-dependent disruptions in rhythmic coupling.
                 </p>
@@ -970,7 +1015,7 @@
         </div>
 
         <!-- Contact Section at Bottom -->
-        <section id="contact" style="margin-top: 40px;">
+        <section id="contact" style="margin-top: 40px;" class="fade-in-delay">
           <div class="side-card" style="max-width: 600px; margin: 0 auto;">
             <div class="side-title" style="text-align: center;">Contact</div>
             <div class="contact-links" style="display: flex; flex-direction: row; gap: 40px; justify-content: space-around;">
@@ -1042,6 +1087,29 @@
         closeResumeModal();
       }
     });
+
+    // Scroll animation
+    function observeElements() {
+      const elements = document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2, .fade-in-delay-3');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      elements.forEach(element => {
+        observer.observe(element);
+      });
+    }
+
+    // Initialize scroll animations when page loads
+    document.addEventListener('DOMContentLoaded', observeElements);
   </script>
 </body>
 </html>
