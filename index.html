@@ -151,18 +151,16 @@
     /* Navigation */
     .top-nav {
       position: fixed;
-      right: 24px;
+      left: 24px;
       top: 24px;
-      left: auto;
       z-index: 1000;
     }
 
     .nav-group {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
       gap: 8px;
-      padding: 8px 12px;
+      padding: 8px;
       background: rgba(255, 240, 245, 0);
       border-radius: 24px;
       backdrop-filter: blur(8px);
@@ -217,9 +215,9 @@
 
     .nav-tooltip {
       position: absolute;
-      top: calc(100% + 6px);
-      left: 50%;
-      transform: translateX(-50%);
+      left: 56px;
+      top: 50%;
+      transform: translateY(-50%);
       background: rgba(255, 240, 245, 0.95);
       color: #ff9ab7;
       padding: 6px 10px;
@@ -240,6 +238,24 @@
 
     /* iOS-specific adjustments */
     @supports (-webkit-touch-callout: none) {
+      .top-nav {
+        left: auto;
+        right: calc(16px + env(safe-area-inset-right, 0px));
+        top: calc(16px + env(safe-area-inset-top, 0px));
+      }
+
+      .nav-group {
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 12px;
+      }
+
+      .nav-tooltip {
+        top: calc(100% + 6px);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
       .location-tag {
         display: none !important;
       }

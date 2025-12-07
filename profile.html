@@ -84,7 +84,7 @@
 
     .top-nav {
       position: fixed;
-      right: 24px;
+        left: 24px;
       top: 24px;
       left: auto;
       z-index: 1000;
@@ -97,7 +97,7 @@
 
     .nav-group {
       display: flex;
-      flex-direction: row;
+        flex-direction: column;
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
@@ -171,7 +171,7 @@
 
     .nav-tooltip {
       position: absolute;
-      top: calc(100% + 6px);
+        left: 56px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(255, 240, 245, 0.95);
@@ -191,6 +191,31 @@
     .nav-item.show-label .nav-tooltip {
       opacity: 1;
     }
+
+      /* iOS tweaks: horizontal top nav, hide carousel section */
+      @supports (-webkit-touch-callout: none) {
+        .top-nav {
+          left: auto;
+          right: calc(16px + env(safe-area-inset-right, 0px));
+          top: calc(16px + env(safe-area-inset-top, 0px));
+        }
+
+        .nav-group {
+          flex-direction: row;
+          align-items: center;
+          padding: 8px 12px;
+        }
+
+        .nav-tooltip {
+          top: calc(100% + 6px);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .enjoy-section {
+          display: none !important;
+        }
+      }
 
     .cursor-glow {
       position: fixed;
