@@ -8,11 +8,30 @@
   <meta name="apple-mobile-web-app-title" content="Hannah Ryu" />
   <meta name="format-detection" content="telephone=no" />
   <title>Hannah Ryu</title>
-  <link rel="icon" href="web_logo.png">
+  <link rel="icon" type="image/png" href="web_logo.png">
+  <link rel="apple-touch-icon" href="web_logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Geist Mono';
+      src: url('Geist_Mono/static/GeistMono-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: 'Geist Mono';
+      src: url('Geist_Mono/static/GeistMono-Medium.ttf') format('truetype');
+      font-weight: 500;
+    }
+
+    @font-face {
+      font-family: 'Geist Mono';
+      src: url('Geist_Mono/static/GeistMono-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+
     :root {
       --pink: #ffc2d1;
       --pink-soft: #ffe4ec;
@@ -28,7 +47,7 @@
     }
 
     body {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Geist Mono', 'DM Sans', -apple-system, BlinkMacSystemFont, monospace;
       background: #ffffff;
       color: var(--dark);
       line-height: 1.7;
@@ -63,6 +82,10 @@
     }
 
     body.dark-mode .nav-group {
+      background: rgba(50, 50, 50, 0);
+    }
+
+    body.dark-mode .nav-group:hover {
       background: rgba(50, 50, 50, 0.6);
     }
 
@@ -87,6 +110,29 @@
       z-index: 9999;
       transition: width 0.2s ease, height 0.2s ease;
       box-shadow: 0 0 20px rgba(255, 194, 209, 0.5);
+    }
+
+    .location-tag {
+      position: fixed;
+      top: 16px;
+      right: 36px;
+      z-index: 1200;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1a1a1a;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-family: 'Geist Mono', 'DM Sans', -apple-system, BlinkMacSystemFont, monospace;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark-mode .location-tag {
+      background: rgba(26, 26, 26, 0.9);
+      color: #e0e0e0;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     }
 
     .cursor-glow.clicking {
@@ -115,9 +161,15 @@
       flex-direction: column;
       gap: 8px;
       padding: 8px;
-      background: rgba(255, 240, 245, 0.6);
+      background: rgba(255, 240, 245, 0);
       border-radius: 24px;
       backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(255, 194, 209, 0);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav-group:hover {
+      background: rgba(255, 240, 245, 0.6);
       box-shadow: 0 2px 12px rgba(255, 194, 209, 0.15);
     }
 
@@ -130,12 +182,12 @@
 
     .nav-item a,
     .nav-item button {
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      border-radius: 16px;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -156,8 +208,8 @@
     }
 
     .nav-item svg {
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
       fill: currentColor;
     }
 
@@ -281,7 +333,7 @@
     }
 
     section h3 {
-      font-size: 0.75rem;
+      font-size: 1rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--gray);
@@ -407,7 +459,7 @@
 
     footer {
       text-align: center;
-      padding: 40px 0;
+      padding: -10px 0;
       font-size: 0.8rem;
       color: var(--gray);
     }
@@ -563,9 +615,10 @@
       color: var(--gray);
       line-height: 1.5;
     }
-  </style>
-</head>
-<body>
+    </style>
+  </head>
+  <body>
+    <div class="location-tag">📍 Cincinnati, OH</div>
   <div class="page">
     <!-- Navigation -->
     <nav class="top-nav">
@@ -638,7 +691,7 @@
         <article class="card fade-in-delay-2">
           <div class="card-header">
             <h4>Isometric EMG Resistance for Accessible Hyperkinesia Control</h4>
-            <span class="chip">Accessibility</span>
+            <span class="chip">Machine Learning</span>
           </div>
           <p>
             Machine learning classification of EMG recorded during simulated hyperkinetic twitches to evaluate whether steady isometric resistance can serve as a reliable control input for assistive interfaces.
@@ -747,7 +800,7 @@
     </section>
 
     <footer>
-      © 2025 Hannah Ryu
+      © 2025 Hannah Ryu · Powered by JavaScript, GitHub Pages, VS Code, and Google Fonts (Geist Mono, DM Sans, Nunito)
     </footer>
   </div>
 
