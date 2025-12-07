@@ -151,16 +151,18 @@
     /* Navigation */
     .top-nav {
       position: fixed;
-      left: 24px;
+      right: 24px;
       top: 24px;
+      left: auto;
       z-index: 1000;
     }
 
     .nav-group {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
       gap: 8px;
-      padding: 8px;
+      padding: 8px 12px;
       background: rgba(255, 240, 245, 0);
       border-radius: 24px;
       backdrop-filter: blur(8px);
@@ -215,9 +217,9 @@
 
     .nav-tooltip {
       position: absolute;
-      left: 56px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
       background: rgba(255, 240, 245, 0.95);
       color: #ff9ab7;
       padding: 6px 10px;
@@ -231,8 +233,20 @@
       box-shadow: 0 2px 8px rgba(255, 194, 209, 0.2);
     }
 
-    .nav-item:hover .nav-tooltip {
+    .nav-item:hover .nav-tooltip,
+    .nav-item.show-label .nav-tooltip {
       opacity: 1;
+    }
+
+    /* iOS-specific adjustments */
+    @supports (-webkit-touch-callout: none) {
+      .location-tag {
+        display: none !important;
+      }
+
+      .enjoy-section {
+        display: none !important;
+      }
     }
 
     /* Header */
@@ -849,6 +863,17 @@
     // Dark mode toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      const trigger = item.querySelector('a, button');
+      if (!trigger) return;
+      trigger.addEventListener('click', () => {
+        navItems.forEach(i => {
+          if (i !== item) i.classList.remove('show-label');
+        });
+        item.classList.toggle('show-label');
+      });
+    });
     
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
