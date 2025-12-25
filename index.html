@@ -24,22 +24,61 @@
     }
   </script>
   <style>
+    /* Self-hosted fonts (WOFF2) */
     @font-face {
-      font-family: 'Geist Mono';
-      src: url('Geist_Mono/static/GeistMono-Regular.ttf') format('truetype');
+      font-family: 'PSA Standard';
+      src: url('fonts/PSA-Standard-Regular.woff2') format('woff2');
       font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
     @font-face {
-      font-family: 'Geist Mono';
-      src: url('Geist_Mono/static/GeistMono-Medium.ttf') format('truetype');
+      font-family: 'PSA Standard';
+      src: url('fonts/PSA-Standard-Semibold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'PS1';
+      src: url('fonts/PS1-regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'PS1';
+      src: url('fonts/PS1-medium.woff2') format('woff2');
       font-weight: 500;
+      font-style: normal;
+      font-display: swap;
     }
 
     @font-face {
-      font-family: 'Geist Mono';
-      src: url('Geist_Mono/static/GeistMono-Bold.ttf') format('truetype');
-      font-weight: 700;
+      font-family: 'PSC';
+      src: url('fonts/psc-reg.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'PSC';
+      src: url('fonts/psc-med.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SS3V';
+      src: url('fonts/SS3V.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
     :root {
@@ -57,7 +96,7 @@
     }
 
     body {
-      font-family: 'Geist Mono', 'DM Sans', -apple-system, BlinkMacSystemFont, monospace;
+      font-family: 'PSA Standard', 'PS1', 'SS3V', 'PSC', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: #f8f5f1;
       background-image: url('grain2.png');
       background-repeat: repeat;
@@ -136,7 +175,7 @@
       color: #1a1a1a;
       padding: 10px 14px;
       border-radius: 14px;
-      font-family: 'Geist Mono', 'DM Sans', -apple-system, BlinkMacSystemFont, monospace;
+      font-family: 'PSA Standard', 'PS1', 'SS3V', 'PSC', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 1.05rem;
       display: inline-flex;
       align-items: center;
@@ -230,24 +269,23 @@
 
     .nav-tooltip {
       position: absolute;
-      left: 56px;
+      left: 72px;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 240, 245, 0.95);
+      background: transparent; /* text only */
       color: #ff9ab7;
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      padding: 0;
+      border-radius: 0;
+      font-size: 0.9rem;
+      font-weight: 700;
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.2s ease;
-      box-shadow: 0 2px 8px rgba(255, 194, 209, 0.2);
+      transition: opacity 0.12s ease;
+      box-shadow: none;
     }
 
-    .nav-item:hover .nav-tooltip,
-    .nav-item.show-label .nav-tooltip {
+    .nav-item:hover .nav-tooltip {
       opacity: 1;
     }
 
@@ -269,6 +307,9 @@
         top: calc(100% + 6px);
         left: 50%;
         transform: translateX(-50%);
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
       }
 
       .location-tag {
@@ -300,13 +341,13 @@
     header h1 a {
       color: transparent;
       text-decoration: none;
-      background-image: linear-gradient(90deg, #ff9ab7, #ffc2d1, #ffdce7);
+      background-image: linear-gradient(90deg, #e4578b, #d1447c, #bf3a70);
       background-size: 0% 100%;
       background-repeat: no-repeat;
       -webkit-background-clip: text;
       background-clip: text;
       animation: title-fill 5s ease-out forwards;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="24" viewBox="0 0 60 24"><text x="0" y="16" font-family="DM Sans, sans-serif" font-size="14" font-weight="600" fill="%23ffc2d1">about</text></svg>') 30 12, pointer;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="24" viewBox="0 0 60 24"><text x="0" y="16" font-family="DM Sans, sans-serif" font-size="14" font-weight="800" fill="%23000000">about</text></svg>') 30 12, pointer;
       transition: -webkit-text-stroke 0.3s ease, text-shadow 0.3s ease;
       -webkit-text-stroke: 0px transparent;
     }
@@ -723,7 +764,7 @@
             <span class="chip">Bayesian Statistics</span>
           </div>
           <p>
-            Bayesian modeling and analysis to evaluate COVID-19 vaccine effectiveness using statistical inference methods.
+            Bayesian modeling and mathematical analysis, comparing COVID-19 vaccine effectiveness using statistical inference methods.
           </p>
           <div class="meta-row">
             <span>R · Bayesian analysis · Statistical modeling</span>
@@ -739,10 +780,10 @@
             <span class="chip">Machine Learning</span>
           </div>
           <p>
-            Machine learning classification of EMG recorded during simulated hyperkinetic twitches to evaluate whether steady isometric resistance can serve as a reliable control input for assistive interfaces.
+            Logistic classification of EMG recordings during simulated hyperkinetic twitches, proposing steady isometric resistance as a reliable control input for assistive interfaces.
           </p>
           <div class="meta-row">
-            <span>EMG · DeepLabCut · Signal processing · Accessibility</span>
+            <span>TensorFlow · Signal processing · Accessibility</span>
           </div>
           <div class="meta-row">
             <a href="Neurohackathon.pdf" target="_blank">View presentation</a>
@@ -845,7 +886,7 @@
     </section>
 
     <footer>
-      © 2025 Hannah Ryu · Powered by JavaScript, GitHub Pages, VS Code, and Google Fonts (Geist Mono, DM Sans, Nunito)
+      © 2025 Hannah Ryu · Powered by hand-coded HTML, CSS, vanilla JS, and self-hosted fonts
     </footer>
   </div>
 
@@ -894,17 +935,6 @@
     // Dark mode toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      const trigger = item.querySelector('a, button');
-      if (!trigger) return;
-      trigger.addEventListener('click', () => {
-        navItems.forEach(i => {
-          if (i !== item) i.classList.remove('show-label');
-        });
-        item.classList.toggle('show-label');
-      });
-    });
     
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
